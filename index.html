@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TP01 WebAR - Exercice 2</title>
+    <title>TP01 WebAR - Exercice 3</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
     <style>
@@ -25,14 +25,32 @@
       <a-marker preset="hiro">
         <a-box
           id="hiro-box"
+          class="clickable"
           position="0 0.5 0"
           rotation="0 45 0"
           material="color: #3498db; opacity: 0.55; transparent: true"
-          animation="property: rotation; to: 0 405 0; loop: true; dur: 3000; easing: linear"
+          animation__spin="property: rotation; to: 0 405 0; loop: true; dur: 3000; easing: linear"
+          animation__pulse="property: scale; startEvents: pulse; from: 1 1 1; to: 1.35 1.35 1.35; dur: 250; dir: alternate; loop: 1; easing: easeInOutQuad"
         ></a-box>
       </a-marker>
 
-      <a-entity camera></a-entity>
+      <a-entity
+        camera
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .clickable"
+      ></a-entity>
     </a-scene>
+
+    <script>
+      const box = document.querySelector("#hiro-box");
+      const colors = ["#3498db", "#e74c3c", "#2ecc71", "#f1c40f"];
+      let colorIndex = 0;
+
+      box.addEventListener("click", () => {
+        colorIndex = (colorIndex + 1) % colors.length;
+        box.setAttribute("material", "color", colors[colorIndex]);
+        box.emit("pulse");
+      });
+    </script>
   </body>
 </html>
