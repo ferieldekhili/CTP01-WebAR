@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP01 WebAR - Exercice 1</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-box
+        position="-3 2 0"
+        rotation="0 35 0"
+        color="#e74c3c"
+      ></a-box>
+
+      <a-box
+        position="0 2 -2"
+        rotation="0 45 0"
+        color="#2ecc71"
+      ></a-box>
+
+      <a-box
+        position="3 2 0"
+        rotation="0 55 0"
+        color="#3498db"
+      ></a-box>
+
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="10"
+        height="10"
+        color="#95a5a6"
+      ></a-plane>
+
+      <a-sky color="#ecf0f1"></a-sky>
+
+      <a-entity
+        camera
+        position="0 10 15"
+        rotation="-35 0 0"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
